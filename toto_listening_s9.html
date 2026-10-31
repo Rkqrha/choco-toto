@@ -13,8 +13,8 @@ body{background:var(--dark);color:var(--light)}h1{color:var(--accent)}
 .voice-panel button{border:1px solid #62506f;border-radius:12px;padding:10px 12px;font-size:14px;min-height:43px}
 .status{font-size:14px;line-height:1.6}.status strong{color:var(--accent)}.heard{font-size:13px;color:#d5c9e0;word-break:keep-all}
 .notice{font-size:12px;color:#d9cbdf;margin-top:7px;line-height:1.5}
-.full .voice-panel{display:none}
-</style></head><body><div class="app"><div class="top"><h1>✦ 또또 얼굴</h1><span class="hint" id="label">기본 미소</span></div><div class="screen" id="screen" title="화면을 누르면 전체 화면에서 돌아옵니다"><div class="face" id="face"><div class="eye left"><div class="shine"></div></div><div class="eye right"><div class="shine"></div></div><div class="cheek left"></div><div class="cheek right"></div><div class="mouth" id="mouth"></div><div class="symbol" id="symbol"></div><div class="tear" id="tear" hidden>💧</div></div></div><section class="voice-panel" aria-label="음성 인식 테스트"><h2>🎤 또또 부르면 반응하기</h2><div class="voice-row"><button id="listenStart" type="button">▶ 듣기 시작</button><button id="listenStop" type="button">■ 듣기 중지</button><button id="voiceTest" type="button">🔊 목소리 시험</button></div><div class="status">마이크 상태: <strong id="micStatus">대기 중</strong></div><div class="heard" id="heard">인식된 말: 아직 없음</div><div class="notice">먼저 '듣기 시작'을 누르고 마이크 권한을 허용해 주세요. “또또야, 안녕”처럼 말해 보세요. 화면을 켜 두어야 하며, 브라우저에 따라 음성 인식이 지원되지 않을 수 있어요. 음성은 이 프로그램에 저장하지 않아요.</div></section><div class="controls"><button id="fullscreen">⛶ 얼굴만 크게 보기</button><button id="demo">▶ 말하는 입 시험</button><button id="blink">✓ 눈 깜빡임 켜짐</button></div><div class="grid" id="buttons"></div><div class="footer">1단계: 표정·눈 깜빡임·입 움직임 테스트용. 아직 마이크나 AI 대화는 연결되지 않았어요. 얼굴만 보기 상태에서는 화면을 터치하면 돌아옵니다.</div></div><script>
+.full .voice-panel,.full .setup-panel{display:none}
+</style></head><body><div class="app"><div class="top"><h1>✦ 또또 얼굴</h1><span class="hint" id="label">기본 미소</span></div><div class="screen" id="screen" title="화면을 누르면 전체 화면에서 돌아옵니다"><div class="face" id="face"><div class="eye left"><div class="shine"></div></div><div class="eye right"><div class="shine"></div></div><div class="cheek left"></div><div class="cheek right"></div><div class="mouth" id="mouth"></div><div class="symbol" id="symbol"></div><div class="tear" id="tear" hidden>💧</div></div></div><section class="setup-panel" id="setupPanel" style="border:1px solid var(--accent);border-radius:16px;padding:12px;margin:10px 0;background:#211a2d"><h2 style="font-size:16px;margin:0 0 8px;color:var(--accent)">🔐 기기 등록 · AI 연결</h2><p style="font-size:12px">처음 한 번 등록하면 이 브라우저에 기기 인증이 저장돼요. 서버 주소는 Cloudflare Worker의 workers.dev 주소를 입력하세요.</p><label style="display:block;font-size:13px">서버 주소 <input id="workerUrl" type="url" placeholder="https://choco-toto-ai.계정.workers.dev" style="width:100%;padding:10px;border-radius:8px;margin:5px 0;background:#fff;color:#111"></label><label style="display:block;font-size:13px">최초 등록 코드 <input id="inviteCode" type="password" autocomplete="off" placeholder="KV에 저장한 등록 코드" style="width:100%;padding:10px;border-radius:8px;margin:5px 0;background:#fff;color:#111"></label><button id="registerDevice" type="button" style="padding:10px;border-radius:10px">이 S9 등록하기</button> <button id="saveWorker" type="button" style="padding:10px;border-radius:10px">서버 주소 저장</button><div id="deviceStatus" role="status" style="font-size:13px;margin-top:8px">기기 등록 상태 확인 중…</div><p style="font-size:12px">등록 코드는 등록 후 자동 삭제되고, 이 휴대폰에 기기 토큰만 저장돼요. 브라우저 데이터를 삭제하면 재등록이 필요해요.</p></section><section class="voice-panel" aria-label="음성 인식 테스트"><h2>🎤 또또 부르면 반응하기</h2><div class="voice-row"><button id="listenStart" type="button">▶ 듣기 시작</button><button id="listenStop" type="button">■ 듣기 중지</button><button id="voiceTest" type="button">🔊 목소리 시험</button></div><div class="status">마이크 상태: <strong id="micStatus">대기 중</strong></div><div class="heard" id="heard">인식된 말: 아직 없음</div><div class="notice">기기 등록 후 먼저 '듣기 시작'을 누르고 마이크 권한을 허용해 주세요. “또또야, 안녕”처럼 말해 보세요. 화면을 켜 두어야 하며, 브라우저에 따라 음성 인식이 지원되지 않을 수 있어요. 음성은 이 프로그램에 저장하지 않아요.</div></section><div class="controls"><button id="fullscreen">⛶ 얼굴만 크게 보기</button><button id="demo">▶ 말하는 입 시험</button><button id="blink">✓ 눈 깜빡임 켜짐</button></div><div class="grid" id="buttons"></div><div class="footer">AI 연결 버전: 등록 후 초코·또또를 부르면 AI와 대화해요. 서버의 ENABLE_AI가 false면 대화는 아직 꺼져 있어요. 얼굴만 보기 상태에서는 화면을 터치하면 돌아옵니다.</div></div><script>
 var moods=[['기본 미소','normal','smile',''],['활짝 웃음','happy','laugh',''],['하트','heart','smile','♥'],['궁금해','normal','tiny','?'],['깜짝 놀람','normal','open','!'],['생각 중','think','tiny','···'],['신나요','happy','laugh','✦'],['졸려요','closed','tiny','Zzz'],['슬퍼요','normal','sad',''],['당황해','closed','wiggle','💧💦'],['아차!','x','flat','!'],['화났어','angry','sad','💢']];var selected=0,blinking=true,talking=false,blinkTimer=null,talkTimer=null;var face=document.getElementById('face'),mouth=document.getElementById('mouth'),symbol=document.getElementById('symbol'),tear=document.getElementById('tear'),buttons=document.getElementById('buttons');function render(){var m=moods[selected];face.className='face eyes-'+m[1];mouth.className='mouth '+(m[2]==='smile'?'':m[2]);symbol.textContent=m[3];symbol.style.color=(m[3]==='♥'||m[3]==='💢')?'#ff95c1':'#85edf5';tear.hidden=selected!==8;document.getElementById('label').textContent=m[0];Array.prototype.forEach.call(buttons.children,function(b,i){b.className=i===selected?'active':''})}moods.forEach(function(m,i){var b=document.createElement('button');b.textContent=m[0];b.onclick=function(){selected=i;render()};buttons.appendChild(b)});render();function blinkOnce(){if(!blinking||['happy','closed','x'].indexOf(moods[selected][1])>=0)return;var eyes=document.querySelectorAll('.eye');eyes.forEach(function(e){e.classList.add('blink')});setTimeout(function(){eyes.forEach(function(e){e.classList.remove('blink')})},170)}blinkTimer=setInterval(blinkOnce,3100);document.getElementById('blink').onclick=function(){blinking=!blinking;this.textContent=blinking?'✓ 눈 깜빡임 켜짐':'눈 깜빡임 꺼짐';this.className=blinking?'active':''};document.getElementById('demo').onclick=function(){talking=!talking;this.textContent=talking?'■ 말하기 멈춤':'▶ 말하는 입 시험';this.className=talking?'active':'';if(talkTimer)clearInterval(talkTimer);if(talking){var open=false;talkTimer=setInterval(function(){open=!open;mouth.className='mouth '+(open?'open':(moods[selected][2]==='smile'?'':moods[selected][2]))},260)}else render()};document.getElementById('fullscreen').onclick=function(){document.body.classList.add('full');if(document.documentElement.requestFullscreen){document.documentElement.requestFullscreen().catch(function(){})}};document.getElementById('screen').onclick=function(){if(document.body.classList.contains('full')){document.body.classList.remove('full');if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(function(){})}};document.addEventListener('fullscreenchange',function(){if(!document.fullscreenElement)document.body.classList.remove('full')});
 </script><script>
 (function(){
@@ -25,7 +25,7 @@ var moods=[['기본 미소','normal','smile',''],['활짝 웃음','happy','laugh
  function state(s){status.textContent=s;}
  function restoreMouth(){if(mouthTimer){clearInterval(mouthTimer);mouthTimer=null;} render();}
  function startMouth(){restoreMouth();var open=false;mouthTimer=setInterval(function(){open=!open;mouth.className='mouth '+(open?'open':'tiny');},240);}
- function scheduleRestart(){if(!want||speaking||retry)return;retry=setTimeout(function(){retry=null;startRec();},850);}
+ function scheduleRestart(){if(!want||speaking||busyAI||retry)return;retry=setTimeout(function(){retry=null;startRec();},850);}
  function stopRec(){if(rec&&listening){try{rec.stop();}catch(e){}}}
  function say(msg,mood){
   if(typeof mood==='number'){selected=mood;render();}
@@ -38,27 +38,50 @@ var moods=[['기본 미소','normal','smile',''],['활짝 웃음','happy','laugh
   u.onend=done;u.onerror=done;
   try{window.speechSynthesis.speak(u);}catch(e){done();state('음성 출력 오류');}
  }
- function handle(t){
-  var normalized=t.replace(/\s+/g,'').replace(/[.,!?~]/g,'');
-  var called=normalized.indexOf(wake)>=0;
-  if(called){awaiting=true;}
-  if(!called&&!awaiting)return;
-  if(called&&normalized===wake||normalized===wake+'야'||normalized===wake+'아'){
-   awaiting=true;say('응! 나 여기 있어. 무슨 일이야?',0);return;
+  var character=name;
+  var storagePrefix='ct_s9_'+character+'_';
+  var workerInput=document.getElementById('workerUrl'),inviteInput=document.getElementById('inviteCode'),deviceStatus=document.getElementById('deviceStatus');
+  workerInput.value=localStorage.getItem(storagePrefix+'url')||'';
+  function serverUrl(){return workerInput.value.trim().replace(/\/+$/,'');}
+  function deviceToken(){return localStorage.getItem(storagePrefix+'token')||'';}
+  function updateRegistration(){deviceStatus.textContent=deviceToken()?'이 기기는 등록 정보가 저장되어 있어요.':'아직 기기 등록이 필요해요.';}
+  updateRegistration();
+  document.getElementById('saveWorker').onclick=function(){var url=serverUrl();if(!/^https:\/\/[^\s]+\.workers\.dev$/.test(url)){deviceStatus.textContent='workers.dev로 끝나는 HTTPS 서버 주소를 입력해 주세요.';return;}localStorage.setItem(storagePrefix+'url',url);deviceStatus.textContent='서버 주소 저장 완료';};
+  document.getElementById('registerDevice').onclick=async function(){
+   var url=serverUrl(),code=inviteInput.value;
+   if(!/^https:\/\/[^\s]+\.workers\.dev$/.test(url)){deviceStatus.textContent='Cloudflare Worker 서버 주소를 먼저 입력해 주세요.';return;}
+   if(code.length<16||code.length>128){deviceStatus.textContent='등록 코드는 16~128자로 입력해 주세요.';return;}
+   this.disabled=true;deviceStatus.textContent='등록 중…';
+   try{var r=await fetch(url+'/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({character:character,code:code})});var data=await r.json();if(!r.ok||!data.token)throw new Error(data.error||'등록 실패 ('+r.status+')');localStorage.setItem(storagePrefix+'url',url);localStorage.setItem(storagePrefix+'token',data.token);inviteInput.value='';deviceStatus.textContent=character+' 등록 성공! 이제 듣기 시작을 눌러 주세요.';}
+   catch(e){deviceStatus.textContent='등록 실패: '+e.message;}
+   finally{this.disabled=false;}
+  };
+  var busyAI=false,history=[];
+  async function askAI(message){
+   var url=localStorage.getItem(storagePrefix+'url'),token=deviceToken();
+   if(!url||!token){state('먼저 위에서 기기를 등록해 주세요');return;}
+   if(busyAI)return;
+   busyAI=true;stoppingForSpeech=true;stopRec();state('생각하는 중…');
+   try{
+    var response=await fetch(url+'/chat',{method:'POST',headers:{'Content-Type':'application/json','X-Device-Token':token},body:JSON.stringify({character:character,message:message.slice(0,250),history:history})});
+    var data=await response.json();if(!response.ok)throw new Error(data.error||'서버 오류 ('+response.status+')');
+    var reply=String(data.reply||'다시 말해 줄래?');history.push({role:'user',content:message.slice(0,250)},{role:'assistant',content:reply.slice(0,250)});history=history.slice(-4);
+    var mood=/슬퍼|속상|아파/.test(reply)?8:/좋아|기뻐|축하|멋져/.test(reply)?1:0;
+    say(reply,mood);
+   }catch(e){state('AI 연결: '+e.message);stoppingForSpeech=false;if(want)scheduleRestart();}
+   finally{busyAI=false;}
   }
-  var reply=null, mood=0;
-  if(/사랑해|좋아해/.test(normalized)){reply='나도 좋아해!';mood=2;}
-  else if(/안녕|하이/.test(normalized)){reply='안녕! 오늘도 반가워!';mood=1;}
-  else if(/놀자|놀이/.test(normalized)){reply='좋아! 우리 재미있게 놀자!';mood=6;}
-  else if(/잘자|졸려/.test(normalized)){reply='잘 자! 좋은 꿈 꿔!';mood=7;}
-  else if(/슬퍼|속상/.test(normalized)){reply='속상했구나. 무슨 일이 있었어?';mood=8;}
-  else if(/화났|짜증/.test(normalized)){reply='화가 났구나. 천천히 이야기해 줘.';mood=11;}
-  else if(/고마워/.test(normalized)){reply='나도 고마워!';mood=1;}
-  if(reply){awaiting=false;say(reply,mood);}
-  else if(called){awaiting=true;say('응! 듣고 있어. 안녕, 놀자, 사랑해 중 하나를 말해 줘!',0);}
- }
+  function handle(t){
+   var normalized=t.replace(/\s+/g,'').replace(/[.,!?~]/g,'');
+   var called=normalized.indexOf(wake)>=0;
+   if(called)awaiting=true;
+   if(!called&&!awaiting)return;
+   var message=t.replace(new RegExp(wake+'(?:야|아)?','g'),'').trim();
+   if(!message){awaiting=true;say('응! 나 여기 있어. 무슨 일이야?',0);return;}
+   awaiting=false;askAI(message);
+  }
  function startRec(){
-  if(!want||speaking||listening)return;
+  if(!want||speaking||listening||busyAI)return;
   if(!SpeechRec){state('음성 인식 미지원 — Chrome과 HTTPS 환경에서 시험해 주세요');want=false;return;}
   if(!rec){rec=new SpeechRec();rec.lang='ko-KR';rec.continuous=true;rec.interimResults=false;
    rec.onstart=function(){listening=true;state('듣는 중 ● '+wake+'야, 라고 불러 주세요');};
@@ -75,7 +98,7 @@ var moods=[['기본 미소','normal','smile',''],['활짝 웃음','happy','laugh
     else if(error==='no-speech'){state('말소리가 들리지 않아요. 다시 시도 중');}
     else if(error!=='aborted'){state('인식 오류: '+error);}
    };
-   rec.onend=function(){listening=false;if(want&&!speaking&&!stoppingForSpeech)scheduleRestart();};
+   rec.onend=function(){listening=false;if(want&&!speaking&&!stoppingForSpeech&&!busyAI)scheduleRestart();};
   }
   try{rec.start();state('마이크 연결 중...');}catch(e){state('마이크 시작 실패: '+e.message);scheduleRestart();}
  }
